@@ -1,0 +1,146 @@
+* {
+    box-sizing: border-box;
+  }  
+
+.container {
+
+    height: 1000px;
+    min-width: 1000px;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    background-color: white;
+    padding: 3rem;
+    border-top: 1px solid black;
+    border-bottom: 1px solid lightgrey;
+}
+
+.container h2 {
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.product {
+    display: flex;
+}
+
+.photos {
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 30px;
+    text-align: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.imageViewer {
+    width: 500px;
+    height: 500px;
+    position: relative;
+    outline: 1px solid lightgrey;
+    margin-bottom: 20px;
+}
+
+.bigImg, .smallImg {
+    max-height: 490px;
+    max-width: 490px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%)
+}
+
+.bigShower {
+    position: absolute;
+    display: block;
+    width: 0;
+    height: 0;
+    z-index: 1;
+    transition: width 1s, height 1s;
+}
+
+.smallImages {
+    margin-top: 20px;
+    display: flex;
+    border-bottom: lightgray 1px solid;
+}
+
+.smallImageViewer {
+    width: 75px;
+    height: 75px;
+    overflow: hidden;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    position: relative;
+    cursor: pointer;;
+}
+
+.smallImg {
+    max-width: 75px;
+    max-height: 75px;
+}
+
+.calInfo {
+    width: 400px;
+    margin-bottom: 10px;
+}
+
+.calInfo h1 {
+    font-size: 40px;
+    font-weight: 800;
+}
+
+
+.calTit, .calNum {
+    all: unset;
+    width: 100px;
+    display: inline-block;
+    font-size: 18px;
+}
+
+.calculator {
+    margin-top: 20px;
+    width: 400px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calTit {
+    width: 250px;
+    font-weight: 600;
+}
+
+.calNum {
+    width: 40px;
+    text-align: center;
+    font-weight: 600;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.buyButton {
+    width: 330px;
+    height: 50px;
+    border: none;
+    border-radius: 0;
+    background-color: black;
+    outline: 1px solid black;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    text-align: center;
+}
+
+.cartButton {
+    width: 50px;
+    height: 50px;
+    padding: 5px;
+    border-radius: 0;
+}
+

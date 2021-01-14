@@ -1,0 +1,107 @@
+/* 
+LoginPage, JoinPage CSS는 다른 css와 안 겹치게 module로 해 놨습니다.
+*/
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: lightgray;
+}
+
+.wrap {
+    width: 100%;
+    min-width: 400px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    width: 400px;
+    height: 960px;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+@media (min-height: 960px) {
+    .wrap {
+        height: 100vh;
+    }
+}
+
+.name,
+.info {
+    width: 400px;
+    height: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+
+.name h3 {
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.form {
+    width: 400px;
+    flex-grow: 1;
+    padding: 40px;
+    padding-top: 20px;
+    font-size: 15px;
+}
+
+.form a,
+.info a,
+.info h3 {
+    font-size: 16px;
+}
+
+.title {
+    width: 380px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 35px;
+    margin-top: 20px;
+}
+
+.label {
+    font-size: 14px;
+}
+
+.joinButton,
+.loginButton {
+    width: 320px;
+    height: 50px;
+    margin-top: 30px;
+    border: none;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    font-size: 22px;
+}
+
+.inputContainer {
+    margin-bottom: 5px;
+}
+
+.loginButton {
+    margin-bottom: 20px;
+}
+
+.joinButton:disabled,
+.loginButton:disabled {
+    background-color: lightgray;
+}
+
+.warning,
+.b {
+    color: red;
+    font-size: 13px;
+}

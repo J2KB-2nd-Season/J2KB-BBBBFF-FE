@@ -1,0 +1,41 @@
+@font-face {
+    font-family: 'NanumSquareRound';
+    font-weight: 100;
+    font-style: normal;
+    src: url('/src/fonts/NanumSquareRoundL.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    font-weight: normal;
+    font-style: normal;
+    src: url('/src/fonts/NanumSquareRoundR.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    font-weight: 600;
+    font-style: normal;
+    src: url('/src/fonts/NanumSquareRoundB.ttf') format('truetype');
+}
+@font-face {
+    font-family: 'NanumSquareRound';
+    font-weight: 800;
+    font-style: normal;
+    src: url('/src/fonts/NanumSquareRoundEB.ttf') format('truetype');
+}
+
+* {
+    margin: 0px;
+    padding: 0px;
+    /*font-size: 20px;*/
+    font-family: 'NanumSquareRound';
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+li {
+    list-style: none;
+}
+a:hover {
+    color: black;
+}
