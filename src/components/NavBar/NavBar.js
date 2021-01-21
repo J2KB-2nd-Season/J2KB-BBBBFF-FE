@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from 'antd';
 import './NavBar.css';
@@ -6,7 +6,6 @@ import 'antd/dist/antd.css';
 import '../input.css';
 
 function NavBar() {
-
     const [Search, setSearch] = useState('');
 
     const onSearchHandler = (e) => {
@@ -81,7 +80,7 @@ function NavBar() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default NavBar
+export default NavBar;

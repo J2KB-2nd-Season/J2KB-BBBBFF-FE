@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Radio, Input, Typography } from 'antd';
 import { phonehandlePwButton, mailhandlePwButton, wowhandlePwButton } from './IdPwFunc';
-import './IdPwFind.css';
+import { Helmet } from 'react-helmet';
 import $ from 'jquery';
+import './IdPwFind.css';
 window.$ = $;
-
 const { Title } = Typography;
 
 function IdPwFind() {
@@ -43,6 +43,9 @@ function IdPwFind() {
 
     return (
         <div className="container">
+            <Helmet>
+                <title>비밀번호 찾기</title>
+            </Helmet>
             <div>
                 <Title level={2}>비밀번호 찾기</Title>
             </div>

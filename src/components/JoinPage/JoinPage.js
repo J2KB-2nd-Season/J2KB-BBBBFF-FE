@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import { registerUser } from '../../_actions/user_action';
 import { useDispatch } from 'react-redux';
 import { Input } from 'antd';
@@ -105,6 +106,9 @@ function JoinPage(props) {
 
     return (
         <div className={styles.wrap}>
+            <Helmet>
+                <title>회원가입</title>
+            </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
                     <div className={styles.title}>J2KB STORE</div>
