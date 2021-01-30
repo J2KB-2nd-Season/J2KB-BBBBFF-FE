@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
-import { Helmet } from 'react-helmet';
 import { Input } from 'antd';
 import styles from './LoginPage.module.css';
 import styles2 from '../JoinPage/JoinPage.module.css';
@@ -56,9 +55,6 @@ function LoginPage(props) {
 
     return (
         <div className={styles.wrap}>
-            <Helmet>
-                <title>로그인</title>
-            </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
                     <div className={styles.title}>J2KB STORE</div>
@@ -90,12 +86,12 @@ function LoginPage(props) {
                         </button>
                     </form>
                     계정이 없으신가요? <Link to="/join">회원가입</Link>
-                    <br />
-                    <br />
+                    <br/>
+                    <br/>
                     비밀번호를 잊어버리셨나요? <Link to="/find/password">비밀번호 찾기</Link>
                 </div>
                 <div className={styles2.info}>
-                    <Link to="/">고객센터</Link>
+                    <Link to="/service">고객센터</Link>
                     <h3>J2KB Study Group. since 2020</h3>
                 </div>
             </div>

@@ -99,12 +99,12 @@
 
 /* 반응형 */
 
-@media (max-width: 1200px) {
+/* @media (max-width: 1200px) {
     .right_item .menu1 {
         display: none;
     }
-}
-@media (max-width: 1000px) {
+} */
+@media (max-width: 1050px) {
     .right_item .menu2 {
         display: none;
     }

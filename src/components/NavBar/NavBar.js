@@ -1,11 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Input } from 'antd';
 import './NavBar.css';
 import 'antd/dist/antd.css';
 import '../input.css';
 
+import products from "../DeleteThisData/products.json";
+
+{
+    /* 나중에는 products 서버에서 가져옴(더미 데이터) */
+}
+
 function NavBar() {
+
     const [Search, setSearch] = useState('');
 
     const onSearchHandler = (e) => {
@@ -39,24 +46,20 @@ function NavBar() {
                                 <a href="/">이벤트</a>
                             </li>
                             <li className="menu1">
-                                <a href="/">매거진</a>
+                                <a href="/service">고객센터</a>
                             </li>
                             <li className="menu2">
-                                <a href="/">세일</a>
+                                <a href="/cart">주문내역</a>
                             </li>
                             <li className="menu2">
-                                <a href="/">이벤트</a>
+                                <Link to={{
+                                    pathname: `/write/review`,
+                                    state: {
+                                        products:products
+                                    }
+                                }} >후기작성</Link>
                             </li>
                             <li className="menu2">
-                                <a href="/">매거진</a>
-                            </li>
-                            <li className="menu3">
-                                <a href="/">세일</a>
-                            </li>
-                            <li className="menu3">
-                                <a href="/">이벤트</a>
-                            </li>
-                            <li className="menu3">
                                 <a href="/admin">관리자</a>
                             </li>
                         </ul>
@@ -80,7 +83,7 @@ function NavBar() {
                 </div>
             </div>
         </div>
-    );
+    )
 }
 
-export default NavBar;
+export default NavBar

@@ -9,10 +9,14 @@ import UploadProductPage from './components/UploadProductPage/UploadProductPage'
 import ProductDetailPage from './components/ProductDetailPage/ProductDetailPage';
 import AdminPage from './components/AdminPage/AdminPage';
 import CustomerPage from './components/CustomerPage/CustomerPage';
+import CartPage from './components/CartPage/CartPage';
+import ServicePage from './components/ServicePage/ServicePage';
+import ReviewWriterPage from './components/ReviewWritePage/ReviewWriterPage';
 import './App.css';
 //import customAxios from './customAxios';
 
 function App() {
+
     /* 
     const [ip, setIp] = useState('');
 
@@ -45,6 +49,9 @@ function App() {
                 <Route exact path="/product/upload" component={UploadProductPage} />
                 <Route exact path="/product/:product_num" component={ProductDetailPage} />
                 <Route exact path="/admin/customer" component={CustomerPage} />
+                <Route exact path="/cart" component={CartPage} />
+                <Route exact path="/service" component={ServicePage} />
+                <Route exact path="/write/review" component={ReviewWriterPage} />
             </Switch>
         </Router>
     );
