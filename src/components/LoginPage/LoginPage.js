@@ -3,6 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { loginUser } from '../../_actions/user_action';
 import { Input } from 'antd';
+import { Helmet } from 'react-helmet';
 import styles from './LoginPage.module.css';
 import styles2 from '../JoinPage/JoinPage.module.css';
 import '../input.css';
@@ -55,6 +56,9 @@ function LoginPage(props) {
 
     return (
         <div className={styles.wrap}>
+            <Helmet>
+                <title>로그인</title>
+            </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
                     <div className={styles.title}>J2KB STORE</div>

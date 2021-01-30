@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { withRouter } from 'react-router-dom';
 import DropZone from '../utils/dropZone';
 import { Input, Button } from 'antd';
+import { Helmet } from 'react-helmet';
 
 const { TextArea } = Input;
 
@@ -52,6 +53,9 @@ function UploadProductPage(props) {
 
     return (
         <div style={{ width: '750px', margin: '3rem auto' }}>
+            <Helmet>
+                <title>상품 등록 페이지</title>
+            </Helmet>
             <div style={{ textAlign: 'center' }}>
                 <h1 style={{ fontSize: '2rem' }}>Product Upload</h1>
             </div>

@@ -6,6 +6,7 @@ import 'antd/dist/antd.css';
 import '../input.css';
 import NavBar from '../NavBar/NavBar';
 import { Link }from "react-router-dom";
+import { Helmet } from 'react-helmet';
 import products from "../DeleteThisData/products.json";
 
 {
@@ -37,6 +38,9 @@ function Main() {
 
     return (
         <div id="wrap">
+            <Helmet>
+                <title>J2KB</title>
+            </Helmet>
             <NavBar />
             <div className="banner">
                 <p>배너</p>

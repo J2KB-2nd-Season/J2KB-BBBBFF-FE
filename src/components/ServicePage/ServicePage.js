@@ -1,6 +1,7 @@
 import React from 'react'
 import { Collapse, Typography, Divider } from 'antd';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const { Panel } = Collapse;
 const { Title } = Typography;
@@ -15,6 +16,9 @@ function ServicePage() {
     
     return (
         <div style={{width: '75%', maxWidth: 1200, margin: "0 auto", padding: "1rem", textAlign: "center", backgroundColor: "white"}}>
+            <Helmet>
+                <title>고객센터</title>
+            </Helmet>
             <Link to='/'>
                 <Title level={2}>J2KB STORE</Title>
             </Link>

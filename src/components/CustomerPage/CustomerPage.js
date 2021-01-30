@@ -1,6 +1,7 @@
 import React from 'react'
 import NavBar from '../NavBar/NavBar';
 import { Table, Typography } from 'antd';
+import { Helmet } from 'react-helmet';
 
 import users from "../DeleteThisData/users.json";
 // 나중에는 서버에서 가져옴 (더미 데이터)
@@ -45,6 +46,9 @@ function CustomerPage() {
 
     return (
         <div>
+            <Helmet>
+                <title>고객 페이지</title>
+            </Helmet>
             <NavBar />
             <div style={{width: '75%', margin: "3rem auto", textAlign: "center"}}>
                 <Title level={2}>고객 정보</Title>

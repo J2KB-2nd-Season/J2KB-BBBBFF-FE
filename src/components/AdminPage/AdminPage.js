@@ -5,6 +5,7 @@ import 'antd/dist/antd.css';
 import '../input.css';
 import NavBar from '../NavBar/NavBar';
 import { Link }from "react-router-dom";
+import { Helmet } from 'react-helmet';
 
 const { Meta } = Card;
 
@@ -35,6 +36,9 @@ function AdminPage() {
 
     return (
         <div id="wrap">
+            <Helmet>
+                <title>관리자 페이지</title>
+            </Helmet>
             <NavBar />
             <div className="contents" style={{ width: '55%', margin: '3rem auto' }}>
                 <Row gutter={[20, 20]}>

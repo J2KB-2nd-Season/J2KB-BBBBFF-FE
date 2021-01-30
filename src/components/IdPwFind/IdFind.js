@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { phonehandleIdButton, mailhandleIdButton, wowhandleIdButton } from './IdPwFunc';
 import { Radio, Input, Typography } from 'antd';
+import { Helmet } from 'react-helmet';
 import './IdPwFind.css';
 import $ from 'jquery';
 window.$ = $;
@@ -38,6 +39,9 @@ function IdFind() {
 
     return (
         <div className="container">
+            <Helmet>
+                <title>아이디 찾기</title>
+            </Helmet>
             <div>
                 <Title level={2}>아이디 찾기</Title>
             </div>

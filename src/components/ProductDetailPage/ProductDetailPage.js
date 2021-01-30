@@ -3,6 +3,7 @@ import NavBar from '../NavBar/NavBar';
 import styles from "./ProductDetailPage.module.css";
 import { Descriptions, Button } from 'antd';
 import { MinusOutlined, PlusOutlined } from '@ant-design/icons'; 
+import { Helmet } from 'react-helmet';
 
 function ProductDetailPage(props) {
     
@@ -65,6 +66,9 @@ function ProductDetailPage(props) {
     if(Product.name) {
       return (
         <div>
+          <Helmet>
+              <title>{Product.name}</title>
+          </Helmet>
           <NavBar/>
           <div className={styles.container}>
               <div>
