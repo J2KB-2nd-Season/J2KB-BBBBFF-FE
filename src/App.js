@@ -12,11 +12,11 @@ import CustomerPage from './components/CustomerPage/CustomerPage';
 import CartPage from './components/CartPage/CartPage';
 import ServicePage from './components/ServicePage/ServicePage';
 import ReviewWriterPage from './components/ReviewWritePage/ReviewWriterPage';
+import Auth from './hoc/auth';
 import './App.css';
 //import customAxios from './customAxios';
 
 function App() {
-
     /* 
     const [ip, setIp] = useState('');
 
@@ -40,18 +40,18 @@ function App() {
                 이 기기의 IP주소는 {ip}입니다.
             </header> */}
             <Switch>
-                <Route exact path="/" component={MainPage} />
-                <Route exact path="/admin" component={AdminPage} />
-                <Route exact path="/login" component={LoginPage} />
-                <Route exact path="/join" component={JoinPage} />
-                <Route exact path="/find/id" component={IdFind} />
-                <Route exact path="/find/password" component={PwFind} />
-                <Route exact path="/product/upload" component={UploadProductPage} />
-                <Route exact path="/product/:product_num" component={ProductDetailPage} />
-                <Route exact path="/admin/customer" component={CustomerPage} />
-                <Route exact path="/cart" component={CartPage} />
-                <Route exact path="/service" component={ServicePage} />
-                <Route exact path="/write/review" component={ReviewWriterPage} />
+                <Route exact path="/" component={Auth(MainPage, null)} />
+                <Route exact path="/login" component={Auth(LoginPage, false)} />
+                <Route exact path="/join" component={Auth(JoinPage, false)} />
+                <Route exact path="/find/id" component={Auth(IdFind, false)} />
+                <Route exact path="/find/password" component={Auth(PwFind, false)} />
+                <Route exact path="/product/upload" component={Auth(UploadProductPage, true, true)} />
+                <Route exact path="/product/:product_num" component={Auth(ProductDetailPage, null)} />
+                <Route exact path="/admin" component={Auth(AdminPage, true, true)} />
+                <Route exact path="/admin/customer" component={Auth(CustomerPage, true, true)} />
+                <Route exact path="/cart" component={Auth(CartPage, true)} />
+                <Route exact path="/service" component={Auth(ServicePage, null)} />
+                <Route exact path="/write/review" component={Auth(ReviewWriterPage, true)} />
             </Switch>
         </Router>
     );
