@@ -126,7 +126,7 @@ export const checkID = () => {
     if (!nameCheck.test(target.value)) {
         return warnForm(target, '영문소문자와 숫자만 사용 가능합니다.');
     } else {
-        div.innerText = '사용 가능한 아이디입니다.';
+        div.innerText = '사용 가능한 형식의 아이디입니다.';
         target.style.outline = '0.3px solid lightgray';
         div.style.color = 'blue';
         return true;

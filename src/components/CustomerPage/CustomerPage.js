@@ -1,14 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import NavBar from '../NavBar/NavBar';
 import { Table, Typography } from 'antd';
 import { Helmet } from 'react-helmet';
 
-import users from "../DeleteThisData/users.json";
+import axios from 'axios';
 // 나중에는 서버에서 가져옴 (더미 데이터)
 
 const { Title } = Typography;
 
 function CustomerPage() {
+
+    const [Users, setUsers] = useState([])
+    
+    useEffect(() => {
+      axios.get('/api/users/getMemberList').then((response) =>{
+        console.log(response.data)
+        setUsers(response.data)
+      })
+    }, [])
 
     const columns = [
         {
@@ -19,29 +28,29 @@ function CustomerPage() {
         },
         {
           title: 'ID',
-          dataIndex: 'id',
+          dataIndex: 'member_id',
           width: 150,
           fixed: 'left'
         },
         {
           title: '이름',
-          dataIndex: 'name',
+          dataIndex: 'member_name',
           width: 100,
         },
         {
           title: '전화번호',
-          dataIndex: 'phon',
+          dataIndex: 'member_phone',
           width: 175,
         },
         {
           title: '이메일',
-          dataIndex: 'email',
+          dataIndex: 'member_email',
           width: 200,
         },
         {
           title: 'Address',
-          dataIndex: 'adrs',
-        },
+          dataIndex: 'member_adrs',
+        }
       ];
 
     return (
@@ -55,8 +64,8 @@ function CustomerPage() {
                  <Table bordered 
                  style={{}}
                  columns={columns} 
-                 dataSource={users} 
-                 pagination={{ pageSize: 50}} 
+                 dataSource={Users} 
+                 pagination={{ pageSize: 10}} 
                  scroll={{ x: 1300, y: 400 }} />
             </div>
         </div>

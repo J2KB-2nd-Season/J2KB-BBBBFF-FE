@@ -16,6 +16,7 @@ import {
 } from '../utils/Func';
 import styles from './JoinPage.module.css';
 import '../input.css';
+import axios from 'axios';
 
 function JoinPage(props) {
     const [Name, setName] = useState('');
@@ -55,6 +56,29 @@ function JoinPage(props) {
         });
     };
 
+    const dupCheckID = () => {
+        axios.get(`/api/users/validate/id?memberId=${Id}`).then(response => {
+            if(response.data) {
+                alert('중복된 아이디가 존재합니다.')
+            } else {
+                alert('사용 가능한 아이디입니다.')
+            }
+        })
+    }
+
+    const dupCheckEmail = () => {
+        const data = {
+            "member_email": Mail
+        }
+        axios.post(`/api/users/validate/email`, data).then(response => {
+            if(response.data) {
+                alert('중복된 이메일이 존재합니다.')
+            } else {
+                alert('사용 가능한 이메일입니다.')
+            }
+        })
+    }
+
     const onNamehandler = (e) => {
         setName(e.currentTarget.value);
     };
@@ -84,7 +108,9 @@ function JoinPage(props) {
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
-                    <div className={styles.title}>J2KB STORE</div>
+                    <Link to='/'>
+                        <div className={styles.title}>J2KB STORE</div>
+                    </Link>
                     <h3>회원가입</h3>
                 </div>
                 <div className={styles.form}>
@@ -116,7 +142,7 @@ function JoinPage(props) {
                                     아이디<b className={styles.b}>*</b> 
                                 </div>
                                 <Button style={{height: '30px', fontSize: '0.8rem',
-                                    margin: '0 0 0.5rem 0'}}>
+                                    margin: '0 0 0.5rem 0'}} onClick={dupCheckID}>
                                     중복확인
                                 </Button>
                             </label>
@@ -178,7 +204,7 @@ function JoinPage(props) {
                                     이메일<b className={styles.b}>*</b> 
                                 </div>
                                 <Button style={{height: '30px', fontSize: '0.8rem',
-                                    margin: '0 0 0.5rem 0'}}>
+                                    margin: '0 0 0.5rem 0'}} onClick={dupCheckEmail}>
                                     중복확인
                                 </Button>
                             </label>

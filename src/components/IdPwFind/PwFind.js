@@ -5,6 +5,8 @@ import { phonehandlePwButton, mailhandlePwButton, wowhandlePwButton } from './Id
 import { Helmet } from 'react-helmet';
 import './IdPwFind.css';
 import $ from 'jquery';
+import axios from 'axios';
+import { USER_SERVER } from '../config';
 window.$ = $;
 
 const { Title } = Typography;
@@ -42,12 +44,31 @@ function IdPwFind() {
         setNumber(e.target.value);
     };
 
+    const onSubmit = () => {
+        const data = {
+            "member_id": Id,
+            "member_email": Email
+        }
+        axios.post(`${USER_SERVER}/find/password`, data).then(response =>{
+                if(response.data === '') {
+                    alert(`일치하는 계정이 없습니다.`)
+                } else {
+                    alert(`임시 비밀번호가 설정되었습니다. 
+                    임시 비밀번호: ${response.data}`)
+                }
+            }
+        )
+    }
+
     return (
         <div className="container">
             <Helmet>
                 <title>비밀번호 찾기</title>
             </Helmet>
-            <div>
+            <div style={{textAlign: 'center'}}>
+                <Link to='/'>
+                    <Title level={2} style={{margin: '0 auto'}}>J2KB STORE</Title>
+                </Link>
                 <Title level={2}>비밀번호 찾기</Title>
             </div>
             <div style={{ display: 'flex' }}>
@@ -203,7 +224,7 @@ function IdPwFind() {
                     />
                 </div>
             )}
-            <button type="submit" className="submitButton" disabled>
+            <button type="submit" className="submitButton" onClick={onSubmit}>
                 비밀번호 찾기
             </button>
         </div>

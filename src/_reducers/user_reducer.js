@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
         //나중에 지움
         case FAKE_LOGIN:
             return { ...state, userData: {
-                id: action.id, isAuth: true, isAdmin: false 
+                id: action.id, isAuth: true, isAdmin: true 
             } };
         case FAKE_AUTH:
             return { ...state,

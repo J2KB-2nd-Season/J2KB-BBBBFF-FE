@@ -15,10 +15,8 @@ export default function (SpecialComponent, option, adminRoute = null) {
 
         useEffect(() => {
             // dispatch(auth()).then((response) => {
-            console.log(user)
             //나중에 지움    
             const response = dispatch(fakeAuth(user))
-            console.log(response)
             //나중에 지움
                 if (!response.payload.userData.isAuth ) {
                 // if (!response.payload.isAuth) {

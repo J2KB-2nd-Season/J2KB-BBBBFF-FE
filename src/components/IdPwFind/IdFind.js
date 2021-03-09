@@ -5,6 +5,8 @@ import { Radio, Input, Typography } from 'antd';
 import { Helmet } from 'react-helmet';
 import './IdPwFind.css';
 import $ from 'jquery';
+import axios from 'axios';
+import { USER_SERVER } from '../config';
 window.$ = $;
 
 const { Title } = Typography;
@@ -37,12 +39,24 @@ function IdFind() {
         setNumber(e.currentTarget.value);
     };
 
+    const onSubmit = (e) => {
+        const data = {
+            "member_email": Email
+        }
+        axios.post(`${USER_SERVER}/find/id`, data).then(response =>
+             alert(`ID는 ${response.data}입니다.`)
+        )
+    }
+
     return (
         <div className="container">
             <Helmet>
                 <title>아이디 찾기</title>
             </Helmet>
-            <div>
+            <div style={{textAlign: 'center'}}>
+                <Link to='/'>
+                    <Title level={2} style={{margin: '0 auto'}}>J2KB STORE</Title>
+                </Link>
                 <Title level={2}>아이디 찾기</Title>
             </div>
             <div style={{ display: 'flex' }}>
@@ -145,7 +159,7 @@ function IdFind() {
                         </p>
                     </div>,
                 )}
-            <button type="submit" className="submitButton" disabled>
+            <button type="submit" className="submitButton" onClick={onSubmit}>
                 아이디 찾기
             </button>
         </div>

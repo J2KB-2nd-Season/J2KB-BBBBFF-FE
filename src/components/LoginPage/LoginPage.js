@@ -27,7 +27,7 @@ function LoginPage(props) {
 
                 dispatch(fakeLogin(Id))
 
-                
+
                 props.history.push('/');
             } else {
                 console.log(response.payload)
@@ -50,7 +50,9 @@ function LoginPage(props) {
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
-                    <div className={styles.title}>J2KB STORE</div>
+                    <Link to='/'>
+                        <div className={styles.title}>J2KB STORE</div>
+                    </Link>
                 </div>
                 <div className={styles2.form}>
                     <form onSubmit={handleLogin}>
