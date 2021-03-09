@@ -15,7 +15,7 @@ function RightMenu() {
             <div className="right_item">
                 <ul>
                     <li className="menu1">
-                        <a href="/">세일</a>
+                        <Link to="/">세일</Link>
                     </li>
                     <li className="menu1">
                         <a href="/">이벤트</a>

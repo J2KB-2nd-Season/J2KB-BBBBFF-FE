@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
-import { registerUser } from '../../_actions/user_action';
+import { fakeLogin, registerUser } from '../../_actions/user_action';
 import { useDispatch } from 'react-redux';
 import { Helmet } from 'react-helmet';
-import { Input } from 'antd';
+import { Button, Input } from 'antd';
 import {
     checkName,
     checkID,
@@ -28,58 +28,31 @@ function JoinPage(props) {
 
     const dispatch = useDispatch();
 
-    {
-        /*
-    
-        Func으로 옮겼습니다
-    
-    */
-    }
 
     const handleSubmit = (event) => {
-        //회원가입 버튼을 눌렀을 때 양식을 체크하는 함수
         event.preventDefault();
 
         let data = {
-            name: Name,
-            id: Id,
-            password: PW,
-            mail: Mail,
-            number: Number,
-            address: Address,
+            "member_name": Name,
+            "member_id": Id,
+            "member_pw": PW,
+            "member_email": Mail,
+            "member_phone": Number,
+            "member_adrs": Address,
+            grade: 0
         };
 
-        {
-            /*
-        
-            서버로 요청
-
-            dispatch(registerUser(data)).then((response) => {
-            if (response.payload.loginSuccess) {
+        dispatch(registerUser(data)).then((response) => {
+            if (response.payload) {
+                console.log(response)
                 alert(`회원가입 성공!`);
                 // 로그인으로 이동
                 props.history.push('/login');
             } else {
+                console.log(response)
                 alert('회원가입 실패!');
             }
         });
-        
-        */
-        }
-
-        {
-            /* *임시* 나중에 삭제 예정 */
-        }
-        if (true) {
-            alert('회원가입 성공!');
-            // 로그인으로 이동
-            props.history.push('/login');
-        } else {
-            alert('회원가입 실패!');
-        }
-        {
-            /* *임시* 나중에 삭제 예정 */
-        }
     };
 
     const onNamehandler = (e) => {
@@ -118,7 +91,9 @@ function JoinPage(props) {
                     <form onSubmit={handleSubmit}>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_name">
-                                이름(성함)<b className={styles.b}>*</b>{' '}
+                                <div>
+                                    이름(성함)<b className={styles.b}>*</b>
+                                </div>
                             </label>
                             <Input
                                 className="joinInput"
@@ -137,7 +112,13 @@ function JoinPage(props) {
                         </div>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_id">
-                                아이디<b className={styles.b}>*</b>
+                                <div>
+                                    아이디<b className={styles.b}>*</b> 
+                                </div>
+                                <Button style={{height: '30px', fontSize: '0.8rem',
+                                    margin: '0 0 0.5rem 0'}}>
+                                    중복확인
+                                </Button>
                             </label>
                             <Input
                                 className="joinInput"
@@ -156,7 +137,9 @@ function JoinPage(props) {
                         </div>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_pw">
-                                비밀번호<b className={styles.b}>*</b>
+                                <div>
+                                    비밀번호<b className={styles.b}>*</b> 
+                                </div>
                             </label>
                             <Input.Password
                                 className="joinInput"
@@ -191,7 +174,13 @@ function JoinPage(props) {
                         </div>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_email">
-                                이메일<b className={styles.b}>*</b>
+                                <div>
+                                    이메일<b className={styles.b}>*</b> 
+                                </div>
+                                <Button style={{height: '30px', fontSize: '0.8rem',
+                                    margin: '0 0 0.5rem 0'}}>
+                                    중복확인
+                                </Button>
                             </label>
                             <Input
                                 className="joinInput"
@@ -210,7 +199,9 @@ function JoinPage(props) {
                         </div>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_phon">
-                                전화번호<b className={styles.b}>*</b>
+                                <div>
+                                    전화번호<b className={styles.b}>*</b> 
+                                </div>
                             </label>
                             <Input
                                 className="joinInput"
@@ -229,7 +220,10 @@ function JoinPage(props) {
                         </div>
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_adrs">
-                                주소<b className={styles.b}>*</b>
+                                <div>
+                                    주소<b className={styles.b}>*</b> 
+                                </div>    
+                                
                             </label>
                             <Input
                                 className="joinInput"

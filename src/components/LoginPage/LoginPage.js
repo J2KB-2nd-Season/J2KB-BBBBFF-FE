@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../_actions/user_action';
+import { fakeLogin, loginUser } from '../../_actions/user_action';
 import { Input } from 'antd';
 import { Helmet } from 'react-helmet';
 import styles from './LoginPage.module.css';
@@ -16,35 +16,24 @@ function LoginPage(props) {
         e.preventDefault();
 
         let data = {
-            id: Id,
-            password: Password,
+            "member_id": Id,
+            "member_pw": Password,
         };
-        {
-            /*
+        dispatch(loginUser(data)).then((response) => {
+            if (response.payload) {
+                console.log(response.payload)
+                alert(`${Id}님 환영합니다!`);
+                // 메인으로 이동
 
-            서버로 요청
+                dispatch(fakeLogin(Id))
 
-            dispatch(loginUser(data)).then((response) => {
-                if (response.payload.loginSuccess) {
-                    // 메인으로 이동
-                    props.history.push('/');
-                } else {
-                    alert('로그인 실패!');
-                }
-            });
-        */
-        }
-        {
-            /* *임시* 나중에 삭제 예정 */
-        }
-        if (true) {
-            alert(`${Id}님 환영합니다!`);
-            // 메인으로 이동
-            props.history.push('/');
-        }
-        {
-            /* *임시* 나중에 삭제 예정 */
-        }
+                
+                props.history.push('/');
+            } else {
+                console.log(response.payload)
+                alert('로그인 실패!');
+            }
+        });
     };
 
     const onIdHandler = (e) => {
