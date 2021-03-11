@@ -9,20 +9,25 @@ import Reducer from './_reducers/index';
 import App from './App';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
+import { CookiesProvider } from 'react-cookie';
 
 const createStoreWithMiddleware = applyMiddleware(ReactPromise, ReactThunk)(createStore);
 
 ReactDOM.render(
-    <Provider
-        store={createStoreWithMiddleware(
-            Reducer,
-            window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-        )}
-    >
-        <BrowserRouter>
-            <App />
-        </BrowserRouter>
-    </Provider>,
+    <CookiesProvider>
+        <Provider
+            store={createStoreWithMiddleware(
+                Reducer,
+                window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+            )}
+        >
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>
+    </CookiesProvider>
+        
+    ,
     document.getElementById('root'),
 );
 

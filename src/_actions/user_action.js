@@ -32,28 +32,3 @@ export function auth() {
         payload: request,
     };
 }
-
-//나중에 지움
-export function fakeLogin(id) {
-    return {
-        type: FAKE_LOGIN,
-        payload: true,
-        id
-    }
-}
-
-export function fakeAuth(user) {
-    window.localStorage.setItem('user', JSON.stringify(user.userData))
-    return {
-        type: FAKE_AUTH,
-        payload: user,   
-    }
-}
-
-export function fakeLogout() {
-    return {
-        type: FAKE_LOGOUT,
-        payload: true,   
-    }
-}
-//나중에 지움

@@ -20,17 +20,10 @@ function LoginPage(props) {
             "member_pw": Password,
         };
         dispatch(loginUser(data)).then((response) => {
-            if (response.payload) {
-                console.log(response.payload)
+            if (response.payload.status === 0) {
                 alert(`${Id}님 환영합니다!`);
-                // 메인으로 이동
-
-                dispatch(fakeLogin(Id))
-
-
                 props.history.push('/');
             } else {
-                console.log(response.payload)
                 alert('로그인 실패!');
             }
         });

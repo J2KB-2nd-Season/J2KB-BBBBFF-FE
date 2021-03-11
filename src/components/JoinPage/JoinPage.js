@@ -45,12 +45,10 @@ function JoinPage(props) {
 
         dispatch(registerUser(data)).then((response) => {
             if (response.payload) {
-                console.log(response)
                 alert(`회원가입 성공!`);
                 // 로그인으로 이동
                 props.history.push('/login');
             } else {
-                console.log(response)
                 alert('회원가입 실패!');
             }
         });

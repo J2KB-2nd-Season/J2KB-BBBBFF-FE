@@ -1,18 +1,28 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fakeLogout } from '../../_actions/user_action';
+import { fakeLogout, logoutUser } from '../../_actions/user_action';
+import { useCookies } from 'react-cookie'
 
 function BottomMenu(props) {
+    
+    const [cookies, setCookie, removeCookie] = useCookies(['member_id']);
+
     const user = useSelector((state) => state.user);
     const dispatch = useDispatch()
 
     const logOut = () => {
-        //나중에 지움
-        dispatch(fakeLogout())
-        alert('로그아웃되었습니다!')
-        window.location.reload();
-        //나중에 지움
+        dispatch(logoutUser()).then(response => {
+            if(response.payload.logoutOk) {
+                removeCookie('member_id', {path: '/api/users'})
+                alert('로그아웃되었습니다!')
+                window.location.reload();
+            } else {
+                alert('로그아웃에 실패하였습니다.')
+            }
+        })
+
+        
     }
 
 
@@ -38,7 +48,7 @@ function BottomMenu(props) {
     } else {
         return (
             <div className="navbar-bottom">
-                <li>{user.userData.id}님</li>
+                <li>{user.userData.name}님</li>
                 <li>알림</li>
                 <li>
                     <Link to="/">마이페이지</Link>
