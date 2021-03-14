@@ -17,6 +17,7 @@ import {
 import styles from './JoinPage.module.css';
 import '../input.css';
 import axios from 'axios';
+import { USER_SERVER } from '../config';
 
 function JoinPage(props) {
     const [Name, setName] = useState('');
@@ -55,7 +56,7 @@ function JoinPage(props) {
     };
 
     const dupCheckID = () => {
-        axios.get(`/api/users/validate/id?memberId=${Id}`).then(response => {
+        axios.get(`${USER_SERVER}/validate/id?memberId=${Id}`).then(response => {
             if(response.data) {
                 alert('중복된 아이디가 존재합니다.')
             } else {
@@ -68,7 +69,7 @@ function JoinPage(props) {
         const data = {
             "member_email": Mail
         }
-        axios.post(`/api/users/validate/email`, data).then(response => {
+        axios.post(`${USER_SERVER}/validate/email`, data).then(response => {
             if(response.data) {
                 alert('중복된 이메일이 존재합니다.')
             } else {

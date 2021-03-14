@@ -4,6 +4,7 @@ import { Table, Typography } from 'antd';
 import { Helmet } from 'react-helmet';
 
 import axios from 'axios';
+import { USER_SERVER } from '../config';
 // 나중에는 서버에서 가져옴 (더미 데이터)
 
 const { Title } = Typography;
@@ -13,7 +14,7 @@ function CustomerPage() {
     const [Users, setUsers] = useState([])
     
     useEffect(() => {
-      axios.get('/api/users/getMemberList').then((response) =>{
+      axios.get(`${USER_SERVER}/getMemberList`).then((response) =>{
         console.log(response.data)
         setUsers(response.data)
       })

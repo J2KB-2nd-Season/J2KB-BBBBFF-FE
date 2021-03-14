@@ -53,8 +53,7 @@ function IdPwFind() {
                 if(response.data === '') {
                     alert(`일치하는 계정이 없습니다.`)
                 } else {
-                    alert(`임시 비밀번호가 설정되었습니다. 
-                    임시 비밀번호: ${response.data}`)
+                    alert(`임시 비밀번호가 설정되었습니다.\n임시 비밀번호: ${response.data}`)
                 }
             }
         )

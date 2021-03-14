@@ -1,7 +1,8 @@
-import { LOGIN_USER, JOIN_USER, LOGOUT_USER, AUTH_USER, 
-    FAKE_LOGIN, FAKE_AUTH, FAKE_LOGOUT } from './type';
+import { LOGIN_USER, JOIN_USER, LOGOUT_USER, AUTH_USER,  } from './type';
 import { USER_SERVER } from '../components/config';
 import axios from 'axios';
+
+
 
 export function loginUser(data) {
     const request = axios.post(`${USER_SERVER}/login`, data).then((response) => response.data);

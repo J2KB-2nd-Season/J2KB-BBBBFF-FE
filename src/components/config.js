@@ -1,2 +1,3 @@
-export const USER_SERVER = '/api/users';
+export const USER_SERVER = process.env.NODE_ENV !== "production" 
+                                                ? '/api/users' : 'http://118.67.128.131:8080/api/users';
 export const PRODUCT_SERVER = '/api/product';
