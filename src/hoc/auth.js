@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { auth, fakeAuth } from '../_actions/user_action';
+import { auth } from '../_actions/user_action';
 
-export default function (SpecialComponent, option, adminRoute = null) {
+export default function Auth(SpecialComponent, option, adminRoute = null) {
     /*
         option: null => 누구나 출입 가능
                 true => 로그인 한 유저만 가능

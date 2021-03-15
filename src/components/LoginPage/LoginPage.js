@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { fakeLogin, loginUser } from '../../_actions/user_action';
+import { loginUser } from '../../_actions/user_action';
 import { Input } from 'antd';
 import { Helmet } from 'react-helmet';
 import styles from './LoginPage.module.css';
@@ -63,7 +63,7 @@ function LoginPage(props) {
                             className={'loginInput'}
                             placeholder="비밀번호를 입력해 주세요."
                             value={Password}
-                            minLength={8}
+                            minLength={4}
                             maxLength={20}
                             onChange={onPasswordHandler}
                             bordered={false}

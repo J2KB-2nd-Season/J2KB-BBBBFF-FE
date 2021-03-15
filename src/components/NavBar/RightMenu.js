@@ -10,7 +10,7 @@ import products from '../DeleteThisData/products.json';
 function RightMenu() {
     const user = useSelector((state) => state.user);
 
-    if (user.userData && !user.userData.isAdmin) {
+    if (user.userData) {
         return (
             <div className="right_item">
                 <ul>
@@ -23,10 +23,10 @@ function RightMenu() {
                     <li className="menu1">
                         <a href="/service">고객센터</a>
                     </li>
-                    <li className="menu2">
+                    {user.userData.isAuth && <li className="menu2">
                         <a href="/cart">주문내역</a>
-                    </li>
-                    <li className="menu2">
+                    </li>}
+                    {user.userData.isAuth && <li className="menu2">
                         <Link
                             to={{
                                 pathname: `/write/review`,
@@ -37,42 +37,17 @@ function RightMenu() {
                         >
                             후기작성
                         </Link>
-                    </li>
+                    </li>}
+                    {user.userData.isAdmin && <li className="menu2">
+                        <a href="/admin">관리자</a>
+                    </li>}
                 </ul>
             </div>
         );
     } else {
         return (
             <div className="right_item">
-                <ul>
-                    <li className="menu1">
-                        <a href="/">세일</a>
-                    </li>
-                    <li className="menu1">
-                        <a href="/">이벤트</a>
-                    </li>
-                    <li className="menu1">
-                        <a href="/service">고객센터</a>
-                    </li>
-                    <li className="menu2">
-                        <a href="/cart">주문내역</a>
-                    </li>
-                    <li className="menu2">
-                        <Link
-                            to={{
-                                pathname: `/write/review`,
-                                state: {
-                                    products: products,
-                                },
-                            }}
-                        >
-                            후기작성
-                        </Link>
-                    </li>
-                    <li className="menu2">
-                        <a href="/admin">관리자</a>
-                    </li>
-                </ul>
+                Loading...
             </div>
         );
     }

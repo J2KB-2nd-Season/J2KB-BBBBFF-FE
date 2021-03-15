@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { fakeLogout, logoutUser } from '../../_actions/user_action';
+import { logoutUser } from '../../_actions/user_action';
 import { useCookies } from 'react-cookie'
+import { Menu } from 'antd';
 
 function BottomMenu(props) {
     
@@ -34,12 +35,14 @@ function BottomMenu(props) {
                         <button id="loginBtn">로그인</button>
                     </Link>
                 </li>
-                <li>
-                    <Link to="/join">회원가입</Link>
-                </li>
-                <li>
-                    <Link to="/find/password">비밀번호 찾기</Link>
-                </li>
+                <Menu mode="horizontal" style={{backgroundColor: "#f1f1f1"}}>
+                    <Menu.Item key="info">
+                        <Link to="/join">회원가입</Link>
+                    </Menu.Item>
+                    <Menu.Item key="cart">
+                        <Link to="/find/password">비밀번호 찾기</Link>
+                    </Menu.Item>
+                </Menu>
                 <li className="event">
                     <a href="/">회원 가입 EVENT, J2KB STORE에 지금 가입하세요!</a>
                 </li>
@@ -48,30 +51,22 @@ function BottomMenu(props) {
     } else {
         return (
             <div className="navbar-bottom">
-                <li>{user.userData.name}님</li>
-                <li>알림</li>
-                <li>
-                    <Link to="/">마이페이지</Link>
+                <li className='user-name'>
+                    {user.userData.name} 님
                 </li>
-                <li>
-                    <Link to="/">쪽지</Link>
-                </li>
-                <li>활동정보</li>
-                <li>쇼핑정보</li>
-                <li>
-                    <Link to="/">좋아요</Link>
-                </li>
-                <li>
-                    <Link to="/cart">장바구니</Link>
-                </li>
-                <li>
-                    <Link to="/service">고객센터</Link>
-                </li>
-                <li onClick={logOut}>로그아웃</li>
-                <li className="event">
-                    <a href="/">회원 가입 EVENT, J2KB STORE에 지금 가입하세요!</a>
-                </li>
+                <Menu mode="horizontal" style={{backgroundColor: "#f1f1f1"}}>
+                    <Menu.Item key="info">
+                        <Link to="/changeinfo">개인정보 수정</Link>
+                    </Menu.Item>
+                    <Menu.Item key="cart">
+                        <Link to="/cart">장바구니</Link>
+                    </Menu.Item>
+                    <Menu.Item key="logout" onClick={logOut}>
+                        로그아웃
+                    </Menu.Item>
+                </Menu>
             </div>
+            
         );
     }
 }

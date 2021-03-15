@@ -58,31 +58,41 @@
 .right_item a:hover {
     color: white;
 }
+
 .navbar-bottom {
-    padding: 20px;
+    display: flex;
+    align-items: center;
 }
+
 .navbar-bottom li #loginBtn {
     width: 146px;
     height: 26px;
     border: 1px solid black;
     outline: none;
     cursor: pointer;
+    font-weight: 600;
+    transition: all 0.5s;
 }
+.navbar-bottom li #loginBtn:hover {
+    background-color: black;
+    color: white;
+}
+
 .navbar-bottom li {
     display: inline-block;
+    margin: 0 1rem 0 1rem;
 }
+.navbar-bottom .user-name{
+    font-size: 16px;
+    font-weight: 800;
+}
+
 .navbar-bottom li:nth-child(1) a::before {
     width: 0px;
     height: 0px;
 }
-.navbar-bottom li a::before {
-    display: inline-block;
-    content: '';
-    width: 1px;
-    height: 10px;
-    margin: 0px 10px;
-    background-color: black;
-    vertical-align: middle;
+.navbar-bottom li:last-child {
+    cursor: pointer;
 }
 .navbar-bottom .event a {
     color: #0078ff;

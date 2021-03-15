@@ -1,15 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import NavBar from '../NavBar/NavBar';
 import styles from "./ProductDetailPage.module.css";
-import { Descriptions, Button } from 'antd';
-import { MinusOutlined, PlusOutlined } from '@ant-design/icons'; 
+import { Descriptions, Button, Tooltip } from 'antd';
+import { MinusOutlined, PlusOutlined, ShoppingCartOutlined } from '@ant-design/icons'; 
 import { Helmet } from 'react-helmet';
+import { useSelector } from 'react-redux';
+import { withRouter } from 'react-router';
+import axios from 'axios';
+import { CART_SERVER } from '../config';
 
 function ProductDetailPage(props) {
     
     const [BuyNum, setBuyNum] = useState(1)
-
     const [Product, setProduct] = useState("")
+    const user = useSelector(state => state.user)
     
     useEffect(() => {
       setProduct(props.location.state.product)
@@ -58,70 +62,99 @@ function ProductDetailPage(props) {
     }
 
     const handlePlus = () => {
-      if(BuyNum < Product.stock) {
+      if(BuyNum < Product.prod_stock) {
         setBuyNum(BuyNum+1);
       }
     }
 
-    if(Product.name) {
+    const addToCart = () => {
+      console.log(user)
+      if(!user.userData.isAuth) {
+        alert('로그인을 먼저 해 주세요.')
+        props.history.push('/login')
+      } else {
+        const data = {
+          "cartQuan": BuyNum,
+          "prodNum": Product.prod_num,
+          "memberId": 'admin'
+        }
+        axios.post(`${CART_SERVER}/addToCart`, data).then(response => {
+          if(response.data === 'success') {
+            const answer = window.confirm('장바구니에 성공적으로 담겼습니다.\n장바구니 페이지로 이동할까요?')
+            if(answer) {
+              props.history.push('/cart')
+            }
+          } else {
+            alert('장바구니 담기에 실패하였습니다.')
+          }
+        })
+      }
+    }
+
+
+    if(Product.prod_name) {
       return (
         <div>
           <Helmet>
-              <title>{Product.name}</title>
+              <title>{Product.prod_name}</title>
           </Helmet>
           <NavBar/>
           <div className={styles.container}>
               <div>
-                <h2>{Product.name}</h2>
+                <h2>{Product.prod_name}</h2>
               </div>
               <div className={styles.product}>
                 <div className={styles.photos}>
                   <div className={styles.imageViewer} onClick={magnify}>
-                    <img id="shower" className={styles.bigImg} src={Product.images[0]} alt="큰이미지"/>
+                    <img id="shower" className={styles.bigImg} src={`../${Product.prod_image}`} alt="큰이미지"/>
                   </div>
                   <div className={styles.bigShower} onClick={hideShower}/>
                   상단 이미지를 눌러 확대할 수 있습니다.
                   <div className={styles.smallImages}>
-                    {Product.images.map( src => (
-                          <div key={src} className={styles.smallImageViewer} onClick={changeImg}>
-                            <img className={styles.smallImg} onClick={changeImg} src={src} alt="작은이미지"></img>
-                          </div>
-                    ))}
+                    <div key={Product.prod_image} className={styles.smallImageViewer} onClick={changeImg}>
+                      <img className={styles.smallImg} onClick={changeImg} src={`../${Product.prod_image}`} alt="작은이미지"></img>
+                    </div>
                   </div>
                 </div>
                 <div>
-                <Descriptions bordered
-                  size="small"
-                  title="Product Info 제품정보">
-                  <Descriptions.Item label="상품명" span={3}>{Product.name}</Descriptions.Item>
-                  <Descriptions.Item label="상품번호" span={3}>{Product.num}</Descriptions.Item>
-                  <Descriptions.Item label="재고" span={3}>{Product.stock}</Descriptions.Item>
-                  <Descriptions.Item label="상품설명" span={3}>{Product.detail}</Descriptions.Item>
-                </Descriptions>
-                <br/>
-                <Descriptions bordered
-                  title="Price Info 가격정보">
-                  <Descriptions.Item label="판매가" span={3}>{Product.price}원</Descriptions.Item>
-                </Descriptions>
-                  <div className={styles.calInfo}>
-                    <div className={styles.calculator}>
-                      <p className={styles.calTit}>{Product.name}</p>
-                      <Button onClick={handleMinus}>
-                        <MinusOutlined />
-                      </Button>
-                      <p className={styles.calNum}>{BuyNum}</p>
-                      <Button onClick={handlePlus}>
-                        <PlusOutlined />
-                      </Button>                    
+                  <Descriptions bordered
+                    size="small"
+                    title="Product Info 제품정보" 
+                    labelStyle={{width: '100px'}}
+                    contentStyle={{width: '400px'}}>
+                    <Descriptions.Item label="상품명" span={3}>{Product.prod_name}</Descriptions.Item>
+                    <Descriptions.Item label="상품번호" span={3}>{Product.prod_num}</Descriptions.Item>
+                    <Descriptions.Item label="재고" span={3}>{Product.prod_stock}</Descriptions.Item>
+                    <Descriptions.Item label="상품설명" span={3}>{Product.prod_detail}</Descriptions.Item>
+                  </Descriptions>
+                  <br/>
+                  <Descriptions bordered
+                    title="Price Info 가격정보"
+                    labelStyle={{width: '100px'}}
+                    contentStyle={{width: '400px'}}>
+                    <Descriptions.Item label="판매가" span={3}>{Product.prod_price}원</Descriptions.Item>
+                  </Descriptions>
+                    <div className={styles.calInfo}>
+                      <div className={styles.calculator}>
+                        <p className={styles.calTit}>{Product.prod_name}</p>
+                        <Button onClick={handleMinus}>
+                          <MinusOutlined />
+                        </Button>
+                        <p className={styles.calNum}>{BuyNum}</p>
+                        <Button onClick={handlePlus}>
+                          <PlusOutlined />
+                        </Button>                    
+                      </div>
+                      <h1>총 {Product.prod_price*BuyNum}원</h1>
                     </div>
-                    <h1>총 {Product.price*BuyNum}원</h1>
-                  </div>
-                  <div className={styles.buttons}>
-                    <button className={styles.buyButton}>바로주문</button>
-                    <button className={styles.cartButton}>
-                     <img alt="cart" src="https://image.flaticon.com/icons/png/512/126/126083.png" style={{width: "100%"}}/>
-                    </button>
-                  </div>
+                    <div className={styles.buttons}>
+                      <button className={styles.buyButton}>바로주문</button>
+                      <Tooltip title='장바구니 담기'>
+                        <Button style={{height: '50px'}} onClick={addToCart}>
+                            <ShoppingCartOutlined style={{fontSize:"25px"}}/>
+                        </Button>
+                      </Tooltip>
+                    </div>
                 </div>
               </div>
           </div>
@@ -138,4 +171,4 @@ function ProductDetailPage(props) {
     
 }
   
-export default ProductDetailPage;
+export default withRouter(ProductDetailPage);

@@ -14,19 +14,6 @@ export const loadWarning = (target) => {
     return div;
 };
 
-export const loadWarningPW = (target) => {
-    //경고창을 불러오거나, 없으면 만드는 함수
-    let div;
-
-    if (target.parentNode.parentNode.querySelector(`.${styles.warning}`))
-        div = target.parentNode.parentNode.querySelector(`.${styles.warning}`);
-    else {
-        div = document.createElement('div');
-        div.setAttribute('class', `${styles.warning}`);
-        target.parentNode.parentNode.appendChild(div);
-    }
-    return div;
-};
 
 export const loadWarning2 = (target) => {
     //경고창을 불러오거나, 없으면 만드는 함수
@@ -53,7 +40,7 @@ export const warnForm = (name, text) => {
 
 export const warnFormPW = (name, text) => {
     //경고창에 메시지 반환하는 함수
-    const div = loadWarningPW(name);
+    const div = loadWarning2(name);
     name.parentNode.style.outline = '0.3px solid red';
     div.innerText = text;
     div.style.color = 'red';
@@ -79,7 +66,7 @@ export const recoverForm = (name) => {
 
 export const recoverFormPW = (name) => {
     //경고창 메시지 없애는 함수
-    const div = loadWarningPW(name);
+    const div = loadWarning2(name);
     name.parentNode.style.outline = '0.3px solid lightgray';
     div.innerText = '';
     return true;
@@ -131,7 +118,6 @@ export const checkID = () => {
         div.style.color = 'blue';
         return true;
     }
-    //아이디 중복을 체크해야 하는데 어떻게 해야 할지 모르겠음 ㅜㅜ
 };
 
 export const checkID2 = () => {
@@ -151,7 +137,6 @@ export const checkID2 = () => {
         div.style.color = 'black';
         return true;
     }
-    //아이디 중복을 체크해야 하는데 어떻게 해야 할지 모르겠음 ㅜㅜ
 };
 
 export const checkPW = () => {
@@ -214,6 +199,15 @@ export const handleButton = () => {
     //조건을 모두 만족해야 회원가입 버튼이 활성화되는 함수
     const isChecked =
         checkName() && checkID() && checkPW() && checkPW2() && checkMail() && checkNumber() && checkAddress();
+    const joinButton = document.querySelector(`.${styles.joinButton}`);
+    joinButton.disabled = !isChecked;
+};
+
+export const handleButton2 = () => {
+    //조건을 모두 만족해야 회원가입 버튼이 활성화되는 함수
+    const isChecked =
+        checkName() && checkMail() && checkNumber() && checkAddress()
+        && document.querySelector('#member_oldpw').value !== ''
     const joinButton = document.querySelector(`.${styles.joinButton}`);
     joinButton.disabled = !isChecked;
 };

@@ -1,133 +1,20 @@
 [
     {
-        "name": "J2KB 명함",
-        "category": {
-            "num": 1,
-            "name": "명함"
-        },
-        "price": "25000",
-        "stock": 50,
-        "images": ["https://image.auction.co.kr/itemimage/19/2f/b8/192fb82e16.jpg",
-                   "https://www.ecard21.co.kr/image/sampleList_basic_bcV.jpg",
-                 "https://img1.bizhows.com/bhfile01/__CM_FILE_DATA/201912/05/11/1499609_1575511266177.jpg"],
-        "detail": "J2KB 명함입니다.",
-        "num": 10001        
+        "prod_num": 1,
+        "prod_name": "J2KB 명함",
+        "prod_price": 5000,
+        "prod_stock": 100,
+        "prod_image": "images/business_card.jpg",
+        "prod_detail": "J2KB 멤버들에게 주어지는 명함입니다.",
+        "category_num": 1      
     },
     {
-        "name": "시계",
-        "category": {
-            "num": 2,
-            "name": "가전"
-        },
-        "price": "34000",
-        "stock": 10,
-        "images": ["https://images-na.ssl-images-amazon.com/images/I/812L5zyAmpL._AC_SX522_.jpg",
-                   "https://www.performancehealth.com/media/catalog/product/cache/933c72112d518ec06f8b7477609fd2b9/b/0/b07gt313nx_main_.jpg",
-                 "https://images.uline.com/is/image//content/dam/images/H/H1500/H-1436.jpg?$Mobile_SI$&iccEmbed=1&icc=AdobeRGB"],
-        "detail": "시계입니다.",
-        "num": 20001         
-    },
-    {
-        "name": "티셔츠",
-        "category": {
-            "num": 3,
-            "name": "의류"
-        },
-        "price": "9900",
-        "stock": 100,
-        "images": ["https://image.msscdn.net/images/goods_img/20190327/996177/996177_3_500.jpg"],
-        "detail": "J2KB 티셔츠입니다.",
-        "num": 30001         
-    },
-    {
-        "name": "사과",
-        "category": {
-            "num": 4,
-            "name": "과일"
-        },
-        "price": "900",
-        "stock": 500,
-        "images": ["https://cdn.wadiz.kr/wwwwadiz/green002/2019/0806/20190806120400827_42588.jpg/wadiz/format/jpg/quality/80/optimize",
-                    "https://t1.daumcdn.net/cfile/blog/99D2BA495D529A8E34" ],
-        "detail": "맛있는 사과입니다.",
-        "num": 40001         
-    },
-    {
-        "name": "J2KB 고급 명함",
-        "category": {
-            "num": 1,
-            "name": "명함"
-        },
-        "price": "35000",
-        "stock": 30,
-        "images": ["https://25planning.co.kr/web/product/big/201608/24_shop1_106484.png",
-                   "https://image.freepik.com/free-psd/luxury-business-card_98870-80.jpg",
-                "https://m.s-areum.com/web/product/big/201701/643_shop1_745643.jpg"],
-        "detail": "J2KB 고오급 명함입니다.",
-        "num": 10002         
-    },
-    {
-        "name": "배",
-        "category": {
-            "num": 4,
-            "name": "과일"
-        },
-        "price": "1200",
-        "stock": 333,
-        "images": ["https://www.hadong.go.kr/_res/center/img/sub/web02154_img01.jpg"],
-        "detail": "무려 신고배 입니다.",
-        "num": 40002         
-    },
-    {
-        "name": "귤",
-        "category": {
-            "num": 4,
-            "name": "과일"
-        },
-        "price": "500",
-        "stock": 5000,
-        "images": ["https://t1.daumcdn.net/liveboard/cemmarketing/0d6246f8208e4e2b8080353a7df8de82.JPG",
-        "https://t1.daumcdn.net/cfile/tistory/23095437579165D806",
-        "https://young.hyundai.com/upload/CMS_NEWS_IMAGE/2019/02/26/CMS_NEWS_IMAGE_F2lMfTdXQ4Bk64DiSkII.jpg"],
-        "detail": "겨울철에는 역시 귤입니다.",
-        "num": 40003         
-    },
-    {
-        "name": "스웨터",
-        "category": {
-            "num": 3,
-            "name": "의류"
-        },
-        "price": "57000",
-        "stock": 25,
-        "images": ["https://t1.daumcdn.net/cfile/tistory/21627C4F54E6D94D1D",
-                   "https://i.pinimg.com/474x/55/d9/70/55d970d783132dbd05d5ddeb1acc1422.jpg"],
-        "detail": "스웨터입니다.",
-        "num": 30002         
-    },
-    {
-        "name": "배(SHIP)",
-        "category": {
-            "num": 5,
-            "name": "선박"
-        },
-        "price": "1250000",
-        "stock": 5,
-        "images": ["https://upload.wikimedia.org/wikipedia/commons/thumb/8/88/Ship_diagram-numbers.svg/320px-Ship_diagram-numbers.svg.png"],
-        "detail": "먹는 배 아닙니다.",
-        "num": 50001         
-    },
-    {
-        "name": "영화",
-        "category": {
-            "num": 6,
-            "name": "영화"
-        },
-        "price": "5000",
-        "stock": 10000,
-        "images": ["https://upload.wikimedia.org/wikipedia/ko/thumb/b/bb/%EC%BD%9C2020_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg/220px-%EC%BD%9C2020_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg",
-        "https://upload.wikimedia.org/wikipedia/ko/b/b8/1917%EC%98%81%ED%99%94_%ED%8F%AC%EC%8A%A4%ED%84%B0.jpg"],
-        "detail": "조조할인입니다.",
-        "num": 60001         
+        "prod_num": 2,
+        "prod_name": "J2KB 스티커",
+        "prod_price": 4000,
+        "prod_stock": 100,
+        "prod_image": "images/sticker.jpg",
+        "prod_detail": "J2KB 멤버들에게 주어지는 스티커입니다.\n노트북,공책 등 다양한 물품에 붙여보세요!",
+        "category_num": 2      
     }
 ]

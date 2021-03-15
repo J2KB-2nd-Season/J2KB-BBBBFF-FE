@@ -15,7 +15,6 @@ function CustomerPage() {
     
     useEffect(() => {
       axios.get(`${USER_SERVER}/getMemberList`).then((response) =>{
-        console.log(response.data)
         setUsers(response.data)
       })
     }, [])
@@ -63,7 +62,6 @@ function CustomerPage() {
             <div style={{width: '75%', margin: "3rem auto", textAlign: "center"}}>
                 <Title level={2}>고객 정보</Title>
                  <Table bordered 
-                 style={{}}
                  columns={columns} 
                  dataSource={Users} 
                  pagination={{ pageSize: 10}} 

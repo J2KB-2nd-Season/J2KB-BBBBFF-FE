@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Row, Col, Card, Input } from 'antd';
+import React from 'react';
+import { Row, Col, Card } from 'antd';
 import ImageSlider from '../utils/ImageSlider';
 import './MainPage.css';
 import 'antd/dist/antd.css';
@@ -23,13 +23,15 @@ function Main() {
         return (
             <Col key={index} lg={6} md={8} xs={24}>
                 <Link to={{
-                    pathname: `/product/${product.num}`,
+                    pathname: `/product/${product.prod_num}`,
                     state: {
                         product:product
                     }
                 }}>
-                    <Card cover={<ImageSlider images={product.images}/>} >
-                        <Meta title={product.name} description={product.detail} />
+                    <Card cover={<ImageSlider images={[product.prod_image]}/>} >
+                        <Meta title={product.prod_name} 
+                        description={product.prod_detail.length >= 30 
+                        ? product.prod_detail.substr(0,30) + '...' : product.prod_detail} />
                     </Card>
                 </Link>
             </Col>

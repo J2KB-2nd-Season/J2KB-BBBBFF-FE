@@ -26,7 +26,7 @@ function AdminPage() {
         return (
             <Col key={index} lg={6} md={8} xs={24}>
                 <Link to={content.link} >
-                    <Card cover={<Image src={content.img} />}>
+                    <Card cover={<img src={content.img} />}>
                         <Meta title={content.title} description={content.description} />
                     </Card>
                 </Link>

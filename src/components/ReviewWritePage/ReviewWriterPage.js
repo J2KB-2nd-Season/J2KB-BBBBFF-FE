@@ -9,7 +9,7 @@ const {Title} = Typography
 function ReviewWriterPage(props) {
 
     const list = props.location.state.products.map(product => ({
-        value: product.num, name: product.name
+        value: product.prod_num, name: product.prod_name
     }))
 
     return (

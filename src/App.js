@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from './components/MainPage/MainPage';
 import LoginPage from './components/LoginPage/LoginPage';
@@ -14,31 +14,12 @@ import ServicePage from './components/ServicePage/ServicePage';
 import ReviewWriterPage from './components/ReviewWritePage/ReviewWriterPage';
 import Auth from './hoc/auth';
 import './App.css';
+import InfoChangePage from './components/InfoChangePage/InfoChangePage';
 //import customAxios from './customAxios';
 
 function App() {
-    /* 
-    const [ip, setIp] = useState('');
-
-    // IP주소 값을 설정합니다.
-    function callback(data) {
-        setIp(data);
-    }
-
-    // 첫번째 렌더링을 다 마친 후 실행합니다.
-    useEffect(
-        () => {
-        // 클라이언트의 IP주소를 알아내는 백엔드의 함수를 호출합니다.
-        customAxios('/ip', callback);
-        }, []
-    );
-    */
-
     return (
         <Router>
-            {/* <header className="App-header">
-                이 기기의 IP주소는 {ip}입니다.
-            </header> */}
             <Switch>
                 <Route exact path="/" component={Auth(MainPage, null)} />
                 <Route exact path="/login" component={Auth(LoginPage, false)} />
@@ -52,6 +33,7 @@ function App() {
                 <Route exact path="/cart" component={Auth(CartPage, true)} />
                 <Route exact path="/service" component={Auth(ServicePage, null)} />
                 <Route exact path="/write/review" component={Auth(ReviewWriterPage, true)} />
+                <Route exact path="/changeinfo" component={Auth(InfoChangePage, true)} />
             </Switch>
         </Router>
     );
