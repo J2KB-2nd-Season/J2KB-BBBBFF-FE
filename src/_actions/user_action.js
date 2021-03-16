@@ -1,8 +1,7 @@
 import { LOGIN_USER, JOIN_USER, LOGOUT_USER, AUTH_USER,  } from './type';
-import { USER_SERVER } from '../components/config';
+import { PRIVATE_KEY, USER_SERVER } from '../components/config';
 import axios from 'axios';
-import { useCookies } from 'react-cookie';
-
+import jwt from 'jsonwebtoken';
 
 
 export function loginUser(data) {
@@ -32,11 +31,14 @@ export function auth(cookies) {
     const request = axios.get(`${USER_SERVER}/auth`, {withCredentials: true}).then((response) => {
         // ↓지울 예정
         const data = response.data;
-        if(cookies.member_id) {
-            data.isAuth = true;
-            data.isAdmin = cookies.member_id === 'admin' ? true : false;
-            data.id = cookies.member_id;
-            data.role = cookies.member_id === 'admin' ? 0 : 1;
+        if(cookies.member_token) {
+            const jwt_parsed = jwt.verify(cookies.member_token, PRIVATE_KEY)
+            if(jwt_parsed.id) {
+                data.isAuth = Boolean(jwt_parsed.id);
+                data.isAdmin = jwt_parsed.id === 'admin' ? true : false;
+                data.id = jwt_parsed.id;
+                data.role = jwt_parsed.id === 'admin' ? 0 : 1;    
+            }
         }
         // ↑지울 예정
         return data;

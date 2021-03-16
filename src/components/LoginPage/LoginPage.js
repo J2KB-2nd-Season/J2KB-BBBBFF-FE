@@ -8,6 +8,8 @@ import styles from './LoginPage.module.css';
 import styles2 from '../JoinPage/JoinPage.module.css';
 import '../input.css';
 import { useCookies } from 'react-cookie';
+import jwt from 'jsonwebtoken';
+import { PRIVATE_KEY } from '../config';
 
 function LoginPage(props) {
     const [Id, setId] = useState('');
@@ -23,9 +25,15 @@ function LoginPage(props) {
         };
         dispatch(loginUser(data)).then((response) => {
             if (response.payload.status === 0) {
-                setCookie('member_id', Id, {path: '/', maxAge: 60*60})
-                alert(`${Id}님 환영합니다!`);
-                props.history.push('/');
+                jwt.sign({id: response.payload.member_id}, PRIVATE_KEY, { 
+                    expiresIn: '10m'}, function(err, token) {
+                        if(err) console.log(err)
+                        else {
+                            setCookie('member_token', token, {path: '/', maxAge: 60*10})
+                            alert(`${Id}님 환영합니다!`);
+                            props.history.push('/');                                    
+                        }
+                })
             } else {
                 alert('로그인 실패!');
             }

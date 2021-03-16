@@ -68,11 +68,14 @@ function ProductDetailPage(props) {
     }
 
     const addToCart = () => {
-      console.log(user)
       if(!user.userData.isAuth) {
         alert('로그인을 먼저 해 주세요.')
         props.history.push('/login')
       } else {
+        if(!user.userData.id) {
+          alert('비정상적인 접근입니다.')
+          return;
+        }
         const data = {
           "cartQuan": BuyNum,
           "prodNum": Product.prod_num,

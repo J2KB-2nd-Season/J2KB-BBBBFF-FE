@@ -13,7 +13,7 @@ export default function Auth(SpecialComponent, option, adminRoute = null) {
     function AuthenticationCheck(props) {
         const user = useSelector((state) => state.user);
         const dispatch = useDispatch();
-        const [cookies] = useCookies(['member_id']);
+        const [cookies] = useCookies(['member_token']);
 
         useEffect(() => {
             dispatch(auth(cookies)).then((response) => {

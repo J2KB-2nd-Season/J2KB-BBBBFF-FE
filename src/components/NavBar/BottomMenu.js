@@ -20,7 +20,8 @@ function BottomMenu(props) {
         // ↑지울 예정
         
         if(response.payload.logoutOk) {
-                removeCookie('member_id', {path: '/'})
+                setCookie('member_token', null, {path: '/', maxAge: 0})
+                removeCookie('member_token', {path: '/'})
                 alert('로그아웃되었습니다!')
                 window.location.reload();
             } else {
