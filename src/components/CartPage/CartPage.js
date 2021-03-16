@@ -4,16 +4,17 @@ import { Table, Typography } from "antd"
 import { Helmet } from 'react-helmet';
 import { CART_SERVER } from '../config';
 import axios from 'axios';
+import { useSelector } from 'react-redux';
 
 const {Title} = Typography
 
 function CartPage() {
 
     const [Carts, setCarts] = useState([])
+    const user = useSelector(state => state.user)
     
     useEffect(() => {
-      axios.get(`${CART_SERVER}/cartList?memberId=${'admin'}`).then((response) =>{
-        console.log(response.data)
+      axios.get(`${CART_SERVER}/cartList?memberId=${user.userData.id}`).then((response) =>{
         setCarts(response.data)
       })
     }, [])

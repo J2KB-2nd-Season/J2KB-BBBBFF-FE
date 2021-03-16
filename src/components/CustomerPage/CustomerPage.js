@@ -17,7 +17,7 @@ function CustomerPage() {
       axios.get(`${USER_SERVER}/getMemberList`).then((response) =>{
         setUsers(response.data)
       })
-    }, [])
+    }, [Users])
 
     const columns = [
         {
@@ -62,7 +62,7 @@ function CustomerPage() {
             <div style={{width: '75%', margin: "3rem auto", textAlign: "center"}}>
                 <Title level={2}>고객 정보</Title>
                  <Table bordered 
-                 columns={columns} 
+                 columns={columns}
                  dataSource={Users} 
                  pagination={{ pageSize: 10}} 
                  scroll={{ x: 1300, y: 400 }} />

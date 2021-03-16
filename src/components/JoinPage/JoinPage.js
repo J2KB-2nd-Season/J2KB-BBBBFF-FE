@@ -41,7 +41,7 @@ function JoinPage(props) {
             "member_email": Mail,
             "member_phone": Number,
             "member_adrs": Address,
-            grade: 0
+            grade: 1
         };
 
         dispatch(registerUser(data)).then((response) => {

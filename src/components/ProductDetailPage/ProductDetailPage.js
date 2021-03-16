@@ -76,7 +76,7 @@ function ProductDetailPage(props) {
         const data = {
           "cartQuan": BuyNum,
           "prodNum": Product.prod_num,
-          "memberId": 'admin'
+          "memberId": user.userData.id
         }
         axios.post(`${CART_SERVER}/addToCart`, data).then(response => {
           if(response.data === 'success') {

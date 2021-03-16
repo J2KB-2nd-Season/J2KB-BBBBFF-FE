@@ -13,15 +13,20 @@ function BottomMenu(props) {
     const dispatch = useDispatch()
 
     const logOut = () => {
-        dispatch(logoutUser()).then(response => {
-            if(response.payload.logoutOk) {
-                removeCookie('member_id', {path: '/api/users'})
+        // dispatch(logoutUser()).then(response => {
+        
+        // ↓지울 예정
+        const response = dispatch(logoutUser())
+        // ↑지울 예정
+        
+        if(response.payload.logoutOk) {
+                removeCookie('member_id', {path: '/'})
                 alert('로그아웃되었습니다!')
                 window.location.reload();
             } else {
                 alert('로그아웃에 실패하였습니다.')
             }
-        })
+        // })
 
         
     }
@@ -52,7 +57,7 @@ function BottomMenu(props) {
         return (
             <div className="navbar-bottom">
                 <li className='user-name'>
-                    {user.userData.name} 님
+                    {user.userData.id} 님
                 </li>
                 <Menu mode="horizontal" style={{backgroundColor: "#f1f1f1"}}>
                     <Menu.Item key="info">

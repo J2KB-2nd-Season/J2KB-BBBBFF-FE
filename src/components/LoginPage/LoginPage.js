@@ -7,10 +7,12 @@ import { Helmet } from 'react-helmet';
 import styles from './LoginPage.module.css';
 import styles2 from '../JoinPage/JoinPage.module.css';
 import '../input.css';
+import { useCookies } from 'react-cookie';
 
 function LoginPage(props) {
     const [Id, setId] = useState('');
     const [Password, setPassword] = useState('');
+    const [cookies, setCookie, removeCookie] = useCookies(['member_id']);
     const dispatch = useDispatch();
     const handleLogin = (e) => {
         e.preventDefault();
@@ -21,6 +23,7 @@ function LoginPage(props) {
         };
         dispatch(loginUser(data)).then((response) => {
             if (response.payload.status === 0) {
+                setCookie('member_id', Id, {path: '/', maxAge: 60*60})
                 alert(`${Id}님 환영합니다!`);
                 props.history.push('/');
             } else {

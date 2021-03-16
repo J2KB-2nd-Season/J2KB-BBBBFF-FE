@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useCookies } from 'react-cookie';
 import { useDispatch, useSelector } from 'react-redux';
 import { auth } from '../_actions/user_action';
 
@@ -12,9 +13,10 @@ export default function Auth(SpecialComponent, option, adminRoute = null) {
     function AuthenticationCheck(props) {
         const user = useSelector((state) => state.user);
         const dispatch = useDispatch();
+        const [cookies] = useCookies(['member_id']);
 
         useEffect(() => {
-            dispatch(auth()).then((response) => {
+            dispatch(auth(cookies)).then((response) => {
                 if (!response.payload.isAuth) {
                     if (option) {
                         props.history.push('/login');
