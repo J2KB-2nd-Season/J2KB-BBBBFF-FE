@@ -17,7 +17,7 @@ function CartPage() {
       axios.get(`${CART_SERVER}/cartList?memberId=${user.userData.id}`).then((response) =>{
         setCarts(response.data)
       })
-    }, [])
+    }, [user])
 
     const contents = Carts.map((cart, index) => ({
         key: index,
