@@ -13,8 +13,8 @@ import CartPage from './components/CartPage/CartPage';
 import ServicePage from './components/ServicePage/ServicePage';
 import ReviewWriterPage from './components/ReviewWritePage/ReviewWriterPage';
 import Auth from './hoc/auth';
-import './App.css';
 import InfoChangePage from './components/InfoChangePage/InfoChangePage';
+import './App.css';
 //import customAxios from './customAxios';
 
 function App() {
