@@ -41,21 +41,21 @@ function IdFind() {
 
     const onSubmit = (e) => {
         const data = {
-            "member_email": Email
-        }
-        axios.post(`${USER_SERVER}/find/id`, data).then(response =>
-             alert(`ID는 ${response.data}입니다.`)
-        )
-    }
+            member_email: Email,
+        };
+        axios.post(`${USER_SERVER}/find/id`, data).then((response) => alert(`ID는 ${response.data}입니다.`));
+    };
 
     return (
         <div className="container">
             <Helmet>
                 <title>아이디 찾기</title>
             </Helmet>
-            <div style={{textAlign: 'center'}}>
-                <Link to='/'>
-                    <Title level={2} style={{margin: '0 auto'}}>J2KB STORE</Title>
+            <div style={{ textAlign: 'center' }}>
+                <Link to="/">
+                    <Title level={2} style={{ margin: '0 auto' }}>
+                        J2KB STORE
+                    </Title>
                 </Link>
                 <Title level={2}>아이디 찾기</Title>
             </div>
@@ -93,6 +93,7 @@ function IdFind() {
                     <div>
                         <Input
                             className="NameInput"
+                            id="member_name"
                             placeholder="이름 입력"
                             style={{ height: '50px' }}
                             value={Name}
@@ -103,35 +104,35 @@ function IdFind() {
                             bordered={false}
                         />
                     </div>
-                    <div>
-                        <div style={{ display: 'flex', position: 'relative' }}>
-                            <Input
-                                className="PhoneInput"
-                                placeholder="휴대전화 입력(-없이)"
-                                style={{ height: '50px' }}
-                                value={Number}
-                                onChange={(e) => {
-                                    onNumberHandler(e);
-                                    phonehandleIdButton();
-                                }}
-                                bordered={false}
-                            />
-                            <button
-                                style={{
-                                    position: 'absolute',
-                                    top: '25px',
-                                    right: '11px',
-                                    fontSize: '14px',
-                                    width: '97px',
-                                    height: '30px',
-                                    border: 'none',
-                                    outline: 'none',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                인증요청
-                            </button>
-                        </div>
+                    <div style={{ position: 'relative' }}>
+                        <Input
+                            className="PhoneInput"
+                            id="member_phon"
+                            placeholder="휴대전화 입력(-추가)"
+                            style={{ height: '50px' }}
+                            value={Number}
+                            onChange={(e) => {
+                                onNumberHandler(e);
+                                phonehandleIdButton();
+                            }}
+                            bordered={false}
+                        />
+                        <button
+                            style={{
+                                position: 'absolute',
+                                top: '25px',
+                                right: '11px',
+                                fontSize: '14px',
+                                width: '97px',
+                                height: '30px',
+                                border: 'none',
+                                outline: 'none',
+                                cursor: 'pointer',
+                                zIndex: 3,
+                            }}
+                        >
+                            인증요청
+                        </button>
                     </div>
                 </div>
             )}
@@ -139,6 +140,7 @@ function IdFind() {
                 <div>
                     <Input
                         className="EmailInput"
+                        id="member_email"
                         placeholder="이메일 입력"
                         style={{ height: '50px' }}
                         value={Email}
@@ -159,7 +161,7 @@ function IdFind() {
                         </p>
                     </div>,
                 )}
-            <button type="submit" className="submitButton" onClick={onSubmit}>
+            <button type="submit" className="submitButton" onClick={onSubmit} disabled>
                 아이디 찾기
             </button>
         </div>

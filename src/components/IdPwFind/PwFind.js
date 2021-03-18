@@ -46,27 +46,28 @@ function IdPwFind() {
 
     const onSubmit = () => {
         const data = {
-            "member_id": Id,
-            "member_email": Email
-        }
-        axios.post(`${USER_SERVER}/find/password`, data).then(response =>{
-                if(response.data === '') {
-                    alert(`일치하는 계정이 없습니다.`)
-                } else {
-                    alert(`임시 비밀번호가 설정되었습니다.\n임시 비밀번호: ${response.data}`)
-                }
+            member_id: Id,
+            member_email: Email,
+        };
+        axios.post(`${USER_SERVER}/find/password`, data).then((response) => {
+            if (response.data === '') {
+                alert(`일치하는 계정이 없습니다.`);
+            } else {
+                alert(`임시 비밀번호가 설정되었습니다.\n임시 비밀번호: ${response.data}`);
             }
-        )
-    }
+        });
+    };
 
     return (
         <div className="container">
             <Helmet>
                 <title>비밀번호 찾기</title>
             </Helmet>
-            <div style={{textAlign: 'center'}}>
-                <Link to='/'>
-                    <Title level={2} style={{margin: '0 auto'}}>J2KB STORE</Title>
+            <div style={{ textAlign: 'center' }}>
+                <Link to="/">
+                    <Title level={2} style={{ margin: '0 auto' }}>
+                        J2KB STORE
+                    </Title>
                 </Link>
                 <Title level={2}>비밀번호 찾기</Title>
             </div>
@@ -116,6 +117,7 @@ function IdPwFind() {
                     <div>
                         <Input
                             className="IdInput"
+                            id="member_id"
                             placeholder="아이디 입력"
                             style={{ height: '50px' }}
                             value={Id}
@@ -131,6 +133,7 @@ function IdPwFind() {
                     <div>
                         <Input
                             className="NameInput"
+                            id="member_name"
                             placeholder="이름 입력"
                             style={{ height: '50px' }}
                             value={Name}
@@ -141,36 +144,35 @@ function IdPwFind() {
                             bordered={false}
                         />
                     </div>
-                    <div>
-                        <div style={{ display: 'flex', position: 'relative' }}>
-                            <Input
-                                className="PhoneInput"
-                                placeholder="휴대전화 입력(-없이)"
-                                style={{ height: '50px' }}
-                                value={Number}
-                                onChange={(e) => {
-                                    onNumberHandler(e);
-                                    phonehandlePwButton();
-                                }}
-                                bordered={false}
-                            />
-                            <button
-                                id={'sendCertPhoneBtn'}
-                                style={{
-                                    position: 'absolute',
-                                    top: '25px',
-                                    right: '11px',
-                                    fontSize: '14px',
-                                    width: '97px',
-                                    height: '30px',
-                                    border: 'none',
-                                    outline: 'none',
-                                    cursor: 'pointer',
-                                }}
-                            >
-                                인증요청
-                            </button>
-                        </div>
+                    <div style={{ position: 'relative' }}>
+                        <Input
+                            className="PhoneInput"
+                            id="member_phon"
+                            placeholder="휴대전화 입력(-추가)"
+                            style={{ height: '50px' }}
+                            value={Number}
+                            onChange={(e) => {
+                                onNumberHandler(e);
+                                phonehandlePwButton();
+                            }}
+                            bordered={false}
+                        />
+                        <button
+                            id={'sendCertPhoneBtn'}
+                            style={{
+                                position: 'absolute',
+                                top: '25px',
+                                right: '11px',
+                                fontSize: '14px',
+                                width: '97px',
+                                height: '30px',
+                                border: 'none',
+                                outline: 'none',
+                                cursor: 'pointer',
+                            }}
+                        >
+                            인증요청
+                        </button>
                     </div>
                 </div>
             )}
@@ -178,6 +180,7 @@ function IdPwFind() {
                 <div>
                     <Input
                         className="IdInput"
+                        id="member_id"
                         placeholder="아이디 입력"
                         style={{ height: '50px' }}
                         value={Id}
@@ -191,6 +194,7 @@ function IdPwFind() {
                     />
                     <Input
                         className="EmailInput"
+                        id="member_email"
                         placeholder="이메일 입력"
                         style={{ height: '50px' }}
                         value={Email}
@@ -210,6 +214,7 @@ function IdPwFind() {
                     </p>
                     <Input
                         className="IdInput"
+                        id="member_id"
                         placeholder="아이디 입력"
                         style={{ height: '50px' }}
                         value={Id}
@@ -223,7 +228,7 @@ function IdPwFind() {
                     />
                 </div>
             )}
-            <button type="submit" className="submitButton" onClick={onSubmit}>
+            <button type="submit" className="submitButton" onClick={onSubmit} disabled>
                 비밀번호 찾기
             </button>
         </div>

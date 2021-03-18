@@ -6,9 +6,9 @@ import { Helmet } from 'react-helmet';
 import { Button, Input } from 'antd';
 import {
     checkName,
-    checkID,
-    checkPW,
-    checkPW2,
+    checkId,
+    checkPw,
+    checkPw2,
     checkMail,
     checkNumber,
     checkAddress,
@@ -30,18 +30,17 @@ function JoinPage(props) {
 
     const dispatch = useDispatch();
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
         let data = {
-            "member_name": Name,
-            "member_id": Id,
-            "member_pw": PW,
-            "member_email": Mail,
-            "member_phone": Number,
-            "member_adrs": Address,
-            grade: 1
+            member_name: Name,
+            member_id: Id,
+            member_pw: PW,
+            member_email: Mail,
+            member_phone: Number,
+            member_adrs: Address,
+            grade: 1,
         };
 
         dispatch(registerUser(data)).then((response) => {
@@ -56,27 +55,27 @@ function JoinPage(props) {
     };
 
     const dupCheckID = () => {
-        axios.get(`${USER_SERVER}/validate/id?memberId=${Id}`).then(response => {
-            if(response.data) {
-                alert('중복된 아이디가 존재합니다.')
+        axios.get(`${USER_SERVER}/validate/id?memberId=${Id}`).then((response) => {
+            if (response.data) {
+                alert('중복된 아이디가 존재합니다.');
             } else {
-                alert('사용 가능한 아이디입니다.')
+                alert('사용 가능한 아이디입니다.');
             }
-        })
-    }
+        });
+    };
 
     const dupCheckEmail = () => {
         const data = {
-            "member_email": Mail
-        }
-        axios.post(`${USER_SERVER}/validate/email`, data).then(response => {
-            if(response.data) {
-                alert('중복된 이메일이 존재합니다.')
+            member_email: Mail,
+        };
+        axios.post(`${USER_SERVER}/validate/email`, data).then((response) => {
+            if (response.data) {
+                alert('중복된 이메일이 존재합니다.');
             } else {
-                alert('사용 가능한 이메일입니다.')
+                alert('사용 가능한 이메일입니다.');
             }
-        })
-    }
+        });
+    };
 
     const onNamehandler = (e) => {
         setName(e.currentTarget.value);
@@ -107,7 +106,7 @@ function JoinPage(props) {
             </Helmet>
             <div className={styles.container}>
                 <div className={styles.name}>
-                    <Link to='/'>
+                    <Link to="/">
                         <div className={styles.title}>J2KB STORE</div>
                     </Link>
                     <h3>회원가입</h3>
@@ -138,10 +137,12 @@ function JoinPage(props) {
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_id">
                                 <div>
-                                    아이디<b className={styles.b}>*</b> 
+                                    아이디<b className={styles.b}>*</b>
                                 </div>
-                                <Button style={{height: '30px', fontSize: '0.8rem',
-                                    margin: '0 0 0.5rem 0'}} onClick={dupCheckID}>
+                                <Button
+                                    style={{ height: '30px', fontSize: '0.8rem', margin: '0 0 0.5rem 0' }}
+                                    onClick={dupCheckID}
+                                >
                                     중복확인
                                 </Button>
                             </label>
@@ -153,7 +154,7 @@ function JoinPage(props) {
                                 maxLength={20}
                                 onChange={(e) => {
                                     onIdhandler(e);
-                                    checkID();
+                                    checkId();
                                     handleButton();
                                 }}
                                 bordered={false}
@@ -163,7 +164,7 @@ function JoinPage(props) {
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_pw">
                                 <div>
-                                    비밀번호<b className={styles.b}>*</b> 
+                                    비밀번호<b className={styles.b}>*</b>
                                 </div>
                             </label>
                             <Input.Password
@@ -174,7 +175,7 @@ function JoinPage(props) {
                                 maxLength={30}
                                 onChange={(e) => {
                                     onPWhandler(e);
-                                    checkPW();
+                                    checkPw();
                                     handleButton();
                                 }}
                                 bordered={false}
@@ -190,7 +191,7 @@ function JoinPage(props) {
                                 maxLength={30}
                                 onChange={(e) => {
                                     onPW2handler(e);
-                                    checkPW2();
+                                    checkPw2();
                                     handleButton();
                                 }}
                                 bordered={false}
@@ -200,10 +201,12 @@ function JoinPage(props) {
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_email">
                                 <div>
-                                    이메일<b className={styles.b}>*</b> 
+                                    이메일<b className={styles.b}>*</b>
                                 </div>
-                                <Button style={{height: '30px', fontSize: '0.8rem',
-                                    margin: '0 0 0.5rem 0'}} onClick={dupCheckEmail}>
+                                <Button
+                                    style={{ height: '30px', fontSize: '0.8rem', margin: '0 0 0.5rem 0' }}
+                                    onClick={dupCheckEmail}
+                                >
                                     중복확인
                                 </Button>
                             </label>
@@ -225,7 +228,7 @@ function JoinPage(props) {
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_phon">
                                 <div>
-                                    전화번호<b className={styles.b}>*</b> 
+                                    전화번호<b className={styles.b}>*</b>
                                 </div>
                             </label>
                             <Input
@@ -246,9 +249,8 @@ function JoinPage(props) {
                         <div className={styles.inputContainer}>
                             <label className={styles.label} htmlFor="member_adrs">
                                 <div>
-                                    주소<b className={styles.b}>*</b> 
-                                </div>    
-                                
+                                    주소<b className={styles.b}>*</b>
+                                </div>
                             </label>
                             <Input
                                 className="joinInput"
